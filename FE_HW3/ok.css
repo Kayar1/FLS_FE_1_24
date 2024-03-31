@@ -1,0 +1,14 @@
+h1 {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #787bcc;
+    background: linear-gradient(to left bottom,
+            #f5c542,
+            #cdd651,
+            #85c282);
+}
+
+a {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: aquamarine;
+    background: tomato;
+}
