@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../libs/normalize.css" />
+  <link rel="shortcut icon" href="../favicon.png" type="image/x-icon" />
+  <link rel="stylesheet" href="../style.css" />
+  <script src="../libs/toogle.js"></script>
+  <title>FE HW4 Lozhnikov</title>
+</head>
+
+<body class="body-about">
+  <div id="top"></div>
+  <nav class="my-nav">
+    <img class="logo" src="../img/logo.png" alt="logo">
+
+    <button class="toggle-menu" onclick="toogleMenu('.menu', 'show','.my-nav')">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <ul class="menu">
+      <li><a href="../pages/main.html">Home</a></li>
+      <li><a href="../pages/about.html">About</a></li>
+      <li>
+        <a href="https://validator.w3.org/nu/#file" target="_blank">HTML Validator</a>
+      </li>
+      <li><a href="../pages/about.html">Contact</a></li>
+    </ul>
+    <form class="my-search" role="search">
+      <input class="form-control me-2" type="t" placeholder="Search" aria-label="Search" />
+      <button class="my-bnt" type="submit">
+        Search
+      </button>
+    </form>
+  </nav>
+  <section>
+    <aside>
+      <h3>Autor Info</h3>
+      <ol class="ol1" type="1">
+        <li><a href="#myname">Autor Name</a></li>
+        <li><a href="#phone">Autor Mobile</a></li>
+        <li><a href="#mymailto">Autor email</a></li>
+      </ol>
+    </aside>
+  </section>
+  <form action="mailto:?newmailto.value">
+    <fieldset>
+      <legend>Contact Data</legend>
+      <div id="nameinfo"></div>
+      <label for="myname">My Name</label>
+      <input type="text" id="myname" name="myname" value="Yaroslav Lozhnikov" pattern="* *" />
+      <br />
+      <div id="mobileinfo"></div>
+      <label for="phone">My Mobile Phone</label>
+      <input type="tel" id="phone" name="phone" value="+380(67)502-20-31"
+        pattern="+[0-9]{3}([0-9]{2})-[0-9]{3}-[0-9]{2}-[0-9]{2}" />
+      <br />
+      <div id="emailinfo"></div>
+      <label for="mymailto">My Email</label>
+      <input type="email" id="mymailto" name="mymailto" pattern="*@*.*" value="kayar77@gmail.com" />
+      <hr />
+      <label for="newmailto">Email to send data</label>
+      <input type="email" id="newmailto" name="newmailto" pattern="*@*.*" />
+      <input type="submit" />
+    </fieldset>
+  </form>
+  </main>
+  <footer class="footer">
+    <a href="#top">Go UP</a>
+    <span class="footer-info">2024 &reg; Lozhnikov &trade; Dnipro
+        <img class="footer-flag" src="../img/1x1/ua.svg" alt="UA" />
+    </span>
+</footer>
+</body>
+
+</html>

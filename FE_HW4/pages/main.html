@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../libs/normalize.css" />
+    <link rel="shortcut icon" href="../favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="../style.css" />
+    <script src="../libs/toogle.js"></script>
+    <title>FE HW4 Lozhnikov</title>
+</head>
+
+<body>
+    <div id="top"></div>
+    <nav class="my-nav">
+        <img class="logo" src="../img/logo.png" alt="logo">
+
+        <button class="toggle-menu" onclick="toogleMenu('.menu', 'show','.my-nav')">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <ul class="menu">
+            <li><a href="../pages/main.html">Home</a></li>
+            <li><a href="../pages/about.html">About</a></li>
+            <li>
+                <a href="https://validator.w3.org/nu/#file" target="_blank">HTML Validator</a>
+            </li>
+            <li><a href="../pages/about.html">Contact</a></li>
+        </ul>
+        <form class="my-search" role="search">
+            <input class="form-control me-2" type="t" placeholder="Search" aria-label="Search" />
+            <button class="my-bnt" type="submit">
+                Search
+            </button>
+        </form>
+    </nav>
+    <div class="wrapper">
+        <div class="row my-row">
+            <main class="my-main">
+                <h1>Main</h1>
+                <div class="my-row-2">
+                    <div class="my-col-2" style="background-color: blue;">1</div>
+                    <div class="my-col-2" style="background-color: gray;">2</div>
+                    <div class="my-col-2" style="background-color: green;">3</div>
+                </div>
+                <div class="my-row-2">
+                    <div class="my-col-2" style="background-color: blue;">1</div>
+                    <div class="my-col-2" style="background-color: gray;">2</div>
+                    <div class="my-col-2" style="background-color: green;">3</div>
+                </div>
+                <div class="my-row-2">
+                    <div class="my-col-2" style="background-color: blue;">1</div>
+                    <div class="my-col-2" style="background-color: gray;">2</div>
+                    <div class="my-col-2" style="background-color: green;">3</div>
+                </div>
+                <div class="my-row-2">
+                    <div class="my-col-2" style="background-color: blue;">1</div>
+                    <div class="my-col-2" style="background-color: gray;">2</div>
+                    <div class="my-col-2" style="background-color: green;">3</div>
+                </div>
+                <div class="my-row-2">
+                    <div class="my-col-2" style="background-color: blue;">1</div>
+                    <div class="my-col-2" style="background-color: gray;">2</div>
+                    <div class="my-col-2" style="background-color: green;">3</div>
+                </div>
+                <div class="my-row-2">
+                    <div class="my-col-2" style="background-color: blue;">1</div>
+                    <div class="my-col-2" style="background-color: gray;">2</div>
+                    <div class="my-col-2" style="background-color: green;">3</div>
+                </div>
+            </main>
+            <aside class="aside aside-1 col">
+                <h2>ASIDE - 1</h2>
+                <iframe id="inlineFrameExample" title="Inline Frame Example" width="300" height="200"
+                    src="https://www.openstreetmap.org/export/embed.html?bbox=34.7810%2C48.5102%2C35.1882%2C48.3608&layer=mapnik">
+                </iframe>
+            </aside>
+            <aside class="aside aside-2 col">
+                <h2>ASIDE - 2</h2>
+                <a href="https://www.facebook.com/"><img src="../img/facebook.svg" alt="facebook"></a>
+            </aside>
+        </div>
+    </div>
+    <footer class="footer">
+        <a href="#top">Go UP</a>
+        <span class="footer-info">2024 &reg; Lozhnikov &trade; Dnipro
+            <img class="footer-flag" src="../img/1x1/ua.svg" alt="UA" />
+        </span>
+    </footer>
+</body>
+
+</html>
