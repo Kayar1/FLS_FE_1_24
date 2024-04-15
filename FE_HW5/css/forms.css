@@ -1,0 +1,99 @@
+/* common */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+.sec-form {
+    display: inline-block;
+    width: 400px;
+}
+
+h2 {
+    text-align: center;
+}
+
+/* css pseudo elements */
+.decorated {
+    width: fit-content;
+    margin: 1.5rem auto;
+    padding: 15px;
+    border-radius: 0.375rem;
+    cursor: pointer;
+    transition: 0.15s;
+    float: left;
+}
+
+.decorated::after {
+    content: '\2746';
+    color: magenta;
+}
+
+.decorated:hover {
+    background: #6b2873;
+}
+
+/* ===== FORM ===== */
+form {
+    float: left;
+
+    width: 350px;
+    margin: auto;
+    margin-left: 30px;
+    user-select: none;
+
+    padding: 30px;
+    box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+    border-radius: 0.375rem;
+}
+
+fieldset {
+    border: 3px groove;
+    padding: 15px;
+    margin: 5px 0;
+}
+
+legend {
+    text-align: right;
+    text-transform: lowercase;
+    font-variant: small-caps;
+}
+
+label {
+    display: inline-block;
+    margin-bottom: 2px;
+}
+
+.input-group {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.input-group span {
+    background: #87edc1;
+    color: red;
+
+    width: 40px;
+
+    border-radius: 0.375rem 0 0 0.375rem;
+
+    padding: 5px;
+}
+
+.input-group input {
+    flex-grow: 1;
+    border: 2px solid darkgreen;
+    border-left: 0;
+
+    border-radius: 0 0.375rem 0.375rem 0;
+    padding: 0.375rem 0.75rem;
+
+    transition: 0.15s;
+}
+
+.input-group input:focus {
+    outline: 0;
+    border-color: #1d8a5b;
+    box-shadow: 0 0 0 0.25rem rgba(29, 118, 91, 0.25);
+}
