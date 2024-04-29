@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FE_HW7_Lozhnikov</title>
+  <style>
+    :root {
+      --left: 0px;
+      --top: 200px;
+    }
+
+    *,
+    ::before,
+    ::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+        Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',
+        sans-serif;
+    }
+
+    body {
+      margin: 0;
+    }
+
+    .flex {
+      display: flex;
+      text-align: center;
+      justify-content: space-around;
+    }
+
+    /* perspective */
+    .wrapper {
+      perspective: 1000px;
+    }
+
+    .cube {
+      font-size: 4em;
+      width: 2em;
+      height: 2em;
+      margin: 1.5em auto;
+
+      transform: rotateX(-45deg) rotateY(45deg);
+      transform-style: preserve-3d;
+      transition: 10s;
+
+      position: absolute;
+      left: var(--left);
+      top: var(--top);
+    }
+
+    .cube .side {
+      border: 1px solid;
+      width: 2em;
+      height: 2em;
+      line-height: 2em;
+
+      background: rgba(192, 128, 71, 0.6);
+      color: white;
+
+      position: absolute;
+      transition: 1s;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .cube .side span {
+      background: white;
+      width: 14px;
+      height: 14px;
+      border: 1px solid black;
+      border-radius: 7px;
+      margin: 3px;
+    }
+
+    .cube .front {
+      transform: translateZ(1em);
+    }
+
+    .cube .back {
+      transform: rotateY(180deg) translateZ(1em);
+    }
+
+    .cube .left {
+      transform: rotateY(-90deg) translateZ(1em);
+    }
+
+    .cube .right {
+      transform: rotateY(90deg) translateZ(1em);
+    }
+
+    .cube .top {
+      /*transform: rotateX(90deg) translateZ(1em);*/
+      transform-origin: top;
+      transform: rotateX(90deg);
+      translate: 0 0 -1em;
+    }
+
+    .cube .bottom {
+      transform: rotateX(-90deg) translateZ(1em);
+    }
+
+    .cat {
+      font-size: 4em;
+      width: 1em;
+      height: 1em;
+      margin: 1.5em auto;
+
+      position: absolute;
+      left: var(--left);
+      top: var(--top);
+      /*opacity: 0;*/
+      visibility: hidden;
+
+      transform: rotateX(-45deg) rotateY(45deg) translateX(0.5em) translateY(0.5em) translateZ(0.5em);
+      transform-style: preserve-3d;
+    }
+
+
+    .cat .side {
+      border: 1px solid;
+      width: 1em;
+      height: 1em;
+      line-height: 1em;
+
+      background: rgba(0, 0, 0, 0.6);
+      color: white;
+
+      position: absolute;
+      transition: 1s;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .cat img {
+      scale: 0.05;
+    }
+
+    .cat .front {
+      transform: translateZ(0.5em);
+    }
+
+    .cat .back {
+      transform: rotateY(180deg) translateZ(0.5em);
+    }
+
+    .cat .left {
+      transform: rotateY(-90deg) translateZ(0.5em);
+    }
+
+    .cat .right {
+      transform: rotateY(90deg) translateZ(0.5em);
+    }
+
+    .cat .top {
+      /*transform: rotateX(90deg) translateZ(0.5em);*/
+      transform-origin: top;
+      transform: rotateX(90deg);
+      translate: 0 0 -0.5em;
+    }
+
+    .cat .bottom {
+      transform: rotateX(-90deg) translateZ(0.5em);
+    }
+
+    /* moving*/
+
+    .original:checked~.cube {
+      transform: rotateX(1turn) rotateY(1turn) rotateZ(1turn) rotateX(-45deg) rotateY(45deg);
+    }
+
+    .cut:checked~.cube {
+      transform: rotateX(0deg) rotateY(0deg);
+    }
+
+    .cut:checked~.cat {
+      transform: rotateX(0deg) rotateY(0deg);
+    }
+
+    .cut:checked~.cube div {
+      background: rgba(192, 128, 71, 1);
+    }
+
+    .cut:checked~.cube .front {
+      transform: translateZ(0em);
+    }
+
+    .cut:checked~.cube .back {
+      transform: rotateY(0deg) translateZ(0em) translateX(-4em);
+    }
+
+    .cut:checked~.cube .left {
+      transform: rotateY(0deg) translateZ(0em) translateX(-2em);
+    }
+
+    .cut:checked~.cube .right {
+      transform: rotateY(0deg) translateZ(0em) translateX(2em);
+    }
+
+    .cut:checked~.cube .top {
+      transform-origin: top;
+      transform: rotateX(0deg) translateY(-2em);
+      translate: 0 0 0em;
+    }
+
+    .cut:checked~.cube .bottom {
+      transform: rotateX(0deg) translateZ(0em) translateY(2em);
+    }
+
+    .open:checked~.cube .top {
+      background: rgba(255, 255, 71, 0.6);
+      rotate: x 90deg;
+    }
+
+    .cat-out:checked~.cube .top {
+      background: rgba(255, 255, 71, 0.6);
+      rotate: x 90deg;
+    }
+
+    .cat-out:checked~.cat {
+      animation:
+        16s ease-out 1s 1 turn-on,
+        5s ease-out 3s 1 jumping,
+        10s ease-out 8s 1 wait-time;
+    }
+
+    @keyframes turn-on {
+      from {
+        visibility: hidden;
+      }
+
+      to {
+        visibility: visible;
+      }
+    }
+
+    @keyframes jumping {
+      from {
+        left: 0;
+        top: var(--top);
+      }
+
+      10% {
+        top: calc(var(--top) - 50px);
+        left: 10%;
+        transform: rotateX(90deg);
+        animation-timing-function: ease-in;
+      }
+
+      25% {
+        top: calc(var(--top) - 100px);
+        left: 25%;
+        transform: rotateY(90deg);
+        animation-timing-function: ease-out;
+      }
+
+      50% {
+        top: calc(var(--top) - 50px);
+        left: 50%;
+        transform: rotateZ(90deg);
+        animation-timing-function: ease-in;
+      }
+
+      75% {
+        top: var(--top);
+        left: 75%;
+        transform: rotateX(-90deg);
+        animation-timing-function: ease-out;
+      }
+
+      to {
+        left: 99%;
+        transform: rotateY(-90deg);
+        top: var(--top);
+      }
+    }
+
+    @keyframes wait-time {
+      from {
+        left: 99%;
+        transform: rotateZ(-90deg);
+        top: var(--top);
+      }
+
+      to {
+        left: 100%;
+        top: var(--top) - 10px
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="flex">
+    <div class="wrapper">
+      <h2><code>Animation</code></h2>
+      <input type="radio" name="moving" id="original" class="original">
+      <label for="original">Original</label>
+      <input type="radio" name="moving" id="cut" class="cut">
+      <label for="cut">Cut</label>
+      <input type="radio" name="moving" id="open" class="open">
+      <label for="open">Open</label>
+      <input type="radio" name="moving" id="cat-out" class="cat-out">
+      <label for="cat-out">Cat - Out</label>
+      <hr>
+      <br><br><br><br>
+      <div class="cube">
+        <div class="side front"><span></span></div>
+        <div class="side back"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+        <div class="side right"><span></span><span></span><span></span></div>
+        <div class="side left"><span></span><span></span><span></span><span></span></div>
+        <div class="side top"><span></span><span></span><span></span><span></span><span></span></div>
+        <div class="side bottom"><span></span><span></span></div>
+      </div>
+      <div id="cat" class="cat">
+        <div class="side front"><img src="./cat-svgrepo-com.svg" alt="cat1"></div>
+        <div class="side back"><img src="./mouse-svgrepo-com.svg" alt="cat2"></div>
+        <div class="side right"><img src="./racoon-svgrepo-com.svg" alt="cat3"></div>
+        <div class="side left"><img src="./lion-svgrepo-com.svg" alt="cat4"></div>
+        <div class="side top"><img src="./tiger-svgrepo-com.svg" alt="cat5"></div>
+        <div class="side bottom"><img src="./siberian-husky-svgrepo-com.svg" alt="cat6"></div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
