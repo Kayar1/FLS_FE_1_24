@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <br>
+    <br><br><br><br>
+    <div class="base">
+        <div class="place-1">
+            <button class="man" onclick="toogleplace('place-1', 'place-1')"><img src="./img/ua.svg"
+                    alt="facebook.svg"></button>
+            <div class="man1">11111111111111111</div>
+        </div>
+        <div class="place-2">
+            <button class="man" onclick="toogleplace('place-2', 'place-1')"><img src="./img/ge.svg"
+                    alt="facebook.svg"></button>
+            <div class="man1">222222222222222222</div>
+        </div>
+        <div class="place-3">
+            <button class="man" onclick="toogleplace('place-3', 'place-1')"><img src="./img/us.svg"
+                    alt="facebook.svg"></button>
+            <div class="man1">333333333333333333</div>
+        </div>
+        <div class="place-4">
+            <button class="man" onclick="toogleplace('place-4', 'place-1')"><img src="./img/fr.svg"
+                    alt="facebook.svg"></button>
+            <div class="man1">444444444444444444</div>
+        </div>
+        <div class="place-5">
+            <button class="man" onclick="toogleplace('place-5', 'place-1')"><img src="./img/de.svg"
+                    alt="facebook.svg"></button>
+            <div class="man1">555555555555555555</div>
+        </div>
+    </div>
+    <script>
+        function toogleplace(class1, class2) {
+            if (class1 !== class2) {
+                const block1 = document.querySelector('.' + class1);
+                const block2 = document.querySelector('.' + class2);
+                const oncl1 = block1.children[0].attributes[1].value.toString();
+
+                block1.classList.add(class2);
+                block1.children[0].attributes[1].value = oncl1.replace(class1, class2);
+                block1.classList.remove(class1);
+
+                block2.classList.add(class1);
+                block2.children[0].attributes[1].value = oncl1;
+                block2.classList.remove(class2);
+            }
+        }
+    </script>
+</body>
+
+</html>

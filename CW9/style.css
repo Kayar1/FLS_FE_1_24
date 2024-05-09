@@ -1,0 +1,95 @@
+*,
+*::after,
+*::before{
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+}
+
+.base{
+    width: 100%;
+    height: 100vh;
+}
+
+.man{
+    width: 50px;
+    height: 50px;
+
+    display: inline-block;
+
+    border: 1px black solid;
+    border-radius: 25px;
+    background-color: blue;
+    color:white;    
+}
+
+.man img{
+    background-color: yellow;
+    border-radius: 5px;
+    scale: 0.8;
+}
+
+.man1{
+    position: relative;
+    color:black;
+    transition-duration: 1s;
+    left:-50px;
+    top:50px;
+    opacity: 0;
+}
+
+.place-1{
+    position: absolute;
+    left:300px;
+    top:300px;
+    transition-duration: 1s;
+    animation: 1s ease-out 0s 1 move1;
+}
+
+@keyframes move1{
+    from {
+        visibility: hidden;
+      }
+
+      to {
+        visibility: visible;
+      }
+}
+
+.place-2{
+    position: absolute;
+    left:100px;
+    top:500px;
+    transition-duration: 1s;
+    scale: 0.7;
+}
+
+.place-3{
+    position: absolute;
+    left:200px;
+    top:200px;
+    transition-duration: 1s;
+    scale: 0.7;
+}
+
+.place-4{
+    position: absolute;
+    left:400px;
+    top:200px;
+    transition-duration: 1s;
+    scale: 0.7;
+}
+
+.place-5{
+    position: absolute;
+    left:500px;
+    top:500px;
+    transition-duration: 1s;
+    scale: 0.7;
+}
+
+.place-1 .man1{
+    opacity: 1;
+}
