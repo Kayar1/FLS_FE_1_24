@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="../libs/toogle.js"></script>
+    <title>Order Manager</title>
+</head>
+<body>
+    <nav class="my-nav">
+        <img class="logo" src="../img/logo.png" alt="logo">
+
+        <button class="toggle-menu" onclick="toogleMenu('.menu', 'show','.my-nav')">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <ul class="menu">
+            <li><a href="../pages/main.html">Home</a></li>
+            <li><a href="../pages/dictionary.html">Dictionary</a></li>
+            <li><a href="../pages/docs.html">Documents</a></li>
+            <li><a href="../pages/about.html">About</a></li>
+        </ul>
+        <form class="my-search" role="search">
+            <input class="form-control me-2" type="text" placeholder="Search" aria-label="Search" />
+            <button class="my-bnt" type="submit">
+                Search
+            </button>
+        </form>
+    </nav>
+</body>
+</html>

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="../libs/toogle.js"></script>
+    <script src="../libs/bootstrap.min.js"></script>
+    <script src="../libs/bootstrap.bundle.min.js"></script>
+    <title>Order Manager</title>
+</head>
+
+<body>
+    <div class="row row1">
+        <nav>nav row</nav>
+    </div>
+    <div class="row">
+        <div class="col-2">
+            <ul>
+                <li><button>Add</button></li>
+                <li><button>Edit</button></li>
+                <li><button>Delete</button></li>
+                <li><button>Previons</button></li>
+            </ul>
+        </div>
+        <div class="col-8">
+            <h1>Clints list</h1>
+            <div class="accordion" id="accordionExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            <div class="container mycontainer">
+                                <div class="row row2">
+                                    <div class="col"><img class="img1" src="../img/folder.svg" alt="folder"></div>
+                                    <div class="col">АТБ</div>
+                                    <div class="col">Сеть магазинов АТБ</div>
+                                    <div class="col-4">м.Дніпро</div>
+                                </div>
+                            </div>
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                        data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <div class="container mycontainer">
+                                <div class="row row3">
+                                    <div class="col"><img class="img1" src="../img/files.svg" alt="files"></div>
+                                    <div class="col">АТБ-10</div>
+                                    <div class="col">Магазин АТБ №10</div>
+                                    <div class="col-4">м.Дніпро, вул. А.Поля, 1</div>
+                                </div>
+                            </div>
+                            <div class="container mycontainer">
+                                <div class="row row3">
+                                    <div class="col"><img class="img1" src="../img/files.svg" alt="files"></div>
+                                    <div class="col">АТБ-15</div>
+                                    <div class="col">Магазин АТБ №15</div>
+                                    <div class="col-4">м.Дніпро, просп. Б.Хмельницького, 15</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            <div class="container mycontainer">
+                                <div class="row row2">
+                                    <div class="col"><img class="img1" src="../img/folder.svg" alt="folder"></div>
+                                    <div class="col">Варус</div>
+                                    <div class="col">Сеть магазинов Варус</div>
+                                    <div class="col-4">м.Дніпро</div>
+                                </div>
+                            </div>
+                        </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                        data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <div class="container mycontainer">
+                                <div class="row row3">
+                                    <div class="col"><img class="img1" src="../img/files.svg" alt="files"></div>
+                                    <div class="col">Варус-22</div>
+                                    <div class="col">Магазин Варус №22</div>
+                                    <div class="col-4">м.Дніпро, вул.Пнікахі, 7</div>
+                                </div>
+                            </div>
+                            <div class="container mycontainer">
+                                <div class="row row3">
+                                    <div class="col"><img class="img1" src="../img/files.svg" alt="files"></div>
+                                    <div class="col">Варус-25</div>
+                                    <div class="col">Магазин Варус №25</div>
+                                    <div class="col-4">м.Дніпро, пл. Європійська, 2</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            <div class="container mycontainer">
+                                <div class="row row2">
+                                    <div class="col"><img class="img1" src="../img/folder.svg" alt="folder"></div>
+                                    <div class="col">ЄВА</div>
+                                    <div class="col">Сеть магазинов Єва</div>
+                                    <div class="col-4">м.Дніпро</div>
+                                </div>
+                            </div>
+                        </button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                        data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <div class="container mycontainer">
+                                <div class="row row3">
+                                    <div class="col"><img class="img1" src="../img/files.svg" alt="files"></div>
+                                    <div class="col">ЄВА-5</div>
+                                    <div class="col">Магазин ЄВА №5</div>
+                                    <div class="col-4">м.Дніпро, пл. Європійська, 5</div>
+                                </div>
+                            </div>
+                            <div class="container mycontainer">
+                                <div class="row row3">
+                                    <div class="col"><img class="img1" src="../img/files.svg" alt="files"></div>
+                                    <div class="col">ЄВА-8</div>
+                                    <div class="col">Магазин ЄВА №8</div>
+                                    <div class="col-4">м.Дніпро, просп. Л.Українки, 24</div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-2">
+            <div id="mytestcarousel" class="carousel slide vertical mytestcarousel" data-bs-ride="carousel">
+                <div class="carousel-inner mytestcarousel">
+                    <div class="carousel-item active" data-bs-interval="1000">
+                        <img src="../img/Object/U0103090.jpg" class="d-block w-100 h-100" alt="printer">
+                    </div>
+                    <div class="carousel-item" data-bs-interval="1000">
+                        <img src="../img/Object/U0479380.jpg" class="d-block w-100 h-100" alt="router">
+                    </div>
+                    <div class="carousel-item" data-bs-interval="1000">
+                        <img src="../img/Object/U0603381.jpg" class="d-block w-100 h-100" alt="oven">
+                    </div>
+                    <div class="carousel-item" data-bs-interval="1000">
+                        <img src="../img/Object/U0662300_1715343810.jpg" class="d-block w-100 h-100" alt="ecoflow">
+                    </div>
+                    <div class="carousel-item" data-bs-interval="1000">
+                        <img src="../img/Object/U0814489.jpg" class="d-block w-100 h-100" alt="pad">
+                    </div>
+                    <div class="carousel-item" data-bs-interval="1000">
+                        <img src="../img/Object/U0846032.jpg" class="d-block w-100 h-100" alt="clock">
+                    </div>
+                    <div class="carousel-item" data-bs-interval="1000">
+                        <img src="../img/Object/U0857393_1705325156.jpg" class="d-block w-100 h-100" alt="notebook">
+                    </div>
+                    <div class="carousel-item" data-bs-interval="1000">
+                        <img src="../img/Object/U0863775_1697823855.jpg" class="d-block w-100 h-100" alt="toothbrush">
+                    </div>
+                    <div class="carousel-item" data-bs-interval="1000">
+                        <img src="../img/Object/U0865596_1700024905.jpg" class="d-block w-100 h-100" alt="smartphone">
+                    </div>
+                    <div class="carousel-item" data-bs-interval="1000">
+                        <img src="../img/Object/U0788303.jpg" class="d-block w-100 h-100" alt="flash">
+                    </div>
+                </div>
+            </div>
+            <div id="mytestcarousel1" class="carousel slide mytestcarousel" data-bs-ride="carousel">
+                <div class="carousel-inner mytestcarousel">
+                    <div class="carousel-item active" data-bs-interval="1000">
+                        <img src="../img/Comp/B0005197.jpg" class="d-block w-100 h-100" alt="keyboard">
+                    </div>
+                    <div class="carousel-item" data-bs-interval="1000">
+                        <img src="../img/Comp/U0045165.jpg" class="d-block w-100 h-100" alt="mouse">
+                    </div>
+                    <div class="carousel-item" data-bs-interval="1000">
+                        <img src="../img/Comp/U0240456.jpg" class="d-block w-100 h-100" alt="power">
+                    </div>
+                    <div class="carousel-item" data-bs-interval="1000">
+                        <img src="../img/Comp/U0536493.jpg" class="d-block w-100 h-100" alt="case">
+                    </div>
+                    <div class="carousel-item" data-bs-interval="1000">
+                        <img src="../img/Comp/U0559405.jpg" class="d-block w-100 h-100" alt="memory">
+                    </div>
+                    <div class="carousel-item" data-bs-interval="1000">
+                        <img src="../img/Comp/U0612196.jpg" class="d-block w-100 h-100" alt="CPU">
+                    </div>
+                    <div class="carousel-item" data-bs-interval="1000">
+                        <img src="../img/Comp/U0705793_1696513771.jpg" class="d-block w-100 h-100" alt="FAN">
+                    </div>
+                    <div class="carousel-item" data-bs-interval="1000">
+                        <img src="../img/Comp/U0763992_1704913125.jpg" class="d-block w-100 h-100" alt="motherboard">
+                    </div>
+                    <div class="carousel-item" data-bs-interval="1000">
+                        <img src="../img/Comp/U0811330.jpg" class="d-block w-100 h-100" alt="SSD">
+                    </div>
+                    <div class="carousel-item" data-bs-interval="1000">
+                        <img src="../img/Comp/U0832013.jpg" class="d-block w-100 h-100" alt="video">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row row1">
+        <footer>footer</footer>
+    </div>
+</body>
+
+</html>

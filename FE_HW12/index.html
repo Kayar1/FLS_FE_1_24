@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+ </head>
+
+<body>
+    <button onclick="getNumber()">Get Number</button>
+    <div class="aaa"></div>
+    <div class="bbb"></div>
+    <script>
+        function getNumber() {
+            const mynumber = Math.floor(Math.random() * 10 + 1);
+            const rr = prompt("guess my number (1 - 10)("+mynumber+")");
+
+            if (!parseInt(rr)) {document.write(`ERROR`);return}
+
+
+            const nrr = parseInt(rr);
+        
+            if (mynumber === nrr) {
+            let text = '';
+            let i=0;
+            while (i<nrr) {
+                if (i=nrr) {
+                    text = text.padEnd(i,`${i}`);break;
+                }
+            }
+            document.querySelector('.aaa').innerHTML = text;
+            document.querySelector('.bbb').innerHTML = ` My Number = ${mynumber}. You Number = ${rr}. Result = ${parseInt(rr) === mynumber ? "YES" : "NO"}`;
+        }
+        }
+    </script>
+</body>
+
+</html>
