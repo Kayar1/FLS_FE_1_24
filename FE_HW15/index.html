@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <input id="first" type="text" value="0" />
+    <input id="second" type="text" value="0" />
+    <button class="calc" onclick="setresult('+')">+</button>
+    <button class="calc" onclick="setresult('-')">-</button>
+    <button class="calc" onclick="setresult('*')">*</button>
+    <button class="calc" onclick="setresult('/')">/</button>
+    <hr />
+    <div id="newresult">Resault</div>
+    <hr />
+    <button onclick="fillarray()">Fill Array</button>
+    <div id="newarray">New Array = []</div>
+    <br />
+    <button onclick="getfunc()">Say command</button>
+    <div id="newarray2">Resault = []</div>
+    <script>
+      let newarray = [];
+
+      const getfirst = () => {
+        return parseInt(document.getElementById("first").value);
+      };
+
+      const getsecond = () => {
+        return parseInt(document.getElementById("second").value);
+      };
+
+      function putresulttoscreen(first, second, oper = "", value = 0) {
+        document.getElementById(
+          "newresult"
+        ).innerHTML = `<b>Result of operation : ${first} ${oper} ${second} = ${value} </b>`;
+      }
+
+      function setresult(oper = "") {
+        const first = getfirst();
+        const second = getsecond();
+
+        let result = 0;
+
+        switch (oper) {
+          case "+":
+            result = first + second;
+            break;
+          case "-":
+            result = first - second;
+            break;
+          case "*":
+            result = first * second;
+            break;
+          case "/":
+            if (second === 0) {
+                result = Number.MAX_VALUE;
+            } else {
+                result = first / second;
+            }
+            break;
+          default:
+            result = -Number.MAX_VALUE;
+            break;
+        }
+        putresulttoscreen(first, second, oper, result);
+      }
+
+      function fillarray() {
+        const maxlength = parseInt(prompt("max element numbers = ? or 10", 10));
+        if (maxlength <= 0) maxlength = 10;
+        newarray.length = maxlength;
+        for (let i = 0; i < maxlength; i++) {
+          newarray[i] = Math.floor(Math.random() * 100 + 1);
+        }
+        document.getElementById(
+          "newarray"
+        ).innerHTML = `New Array = [ ${newarray.join(", ")} ]`;
+      }
+
+      const getsorted = (origin = Array(0)) => {
+        let result = new Array(origin.length);
+        origin.forEach((el, ind) => (result[ind] = el));
+        result.sort((a, b) => a - b);
+        return result;
+      };
+
+      const getshuffled = (origin = Array(0)) => {
+        let result = new Array(origin.length);
+        const readyindex = new Array(0);
+        while (readyindex.length < result.length) {
+          const index = Math.floor(Math.random() * origin.length);
+          if (readyindex.find((elem) => elem === index) === undefined) {
+            readyindex.push(index);
+            result[readyindex.length - 1] = origin[index];
+          }
+        }
+        return result;
+      }
+
+      function getfunc() {
+        const temp = prompt("sort (1) or shuffle (2) ? or 1", 1).toUpperCase();
+        let newarray2 = new Array(newarray.length);
+        let command = "sorted";
+        switch (temp) {
+          case "SORT": case "1":
+            newarray2 = getsorted(newarray);
+            break;
+          case "SUFFLE": case "2":
+            newarray2 = getshuffled(newarray);
+            command = "shuffled";
+            break;
+          default:
+            newarray2 = getsorted(newarray);
+            break;
+        }
+        document.getElementById(
+          "newarray2"
+        ).innerHTML = `New Array 1 is ${command} = [ ${newarray2.join(", ")} ]`;
+      }
+    </script>
+  </body>
+</html>

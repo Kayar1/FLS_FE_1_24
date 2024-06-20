@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        Array.prototype.myConcat = function (second) {
+            for (let i = 0; i < second.length; i++) {
+                this[this.length] = second[i];
+            }
+            return this;
+        }
+
+        Array.prototype.myReverse = function () {
+            for (let i = 0; i < this.length / 2; i++) {
+                const temp = this[i];
+                this[i] = this[this.length - 1 - i];
+                this[this.length - 1 - i] = temp;
+            }
+            return this;
+        }
+        
+        Array.prototype.myPush = function (...args) {
+            for (let arg of args) {
+                this[this.length] = arg;
+            }
+            return args;
+        }
+
+        Array.prototype.myUnshift = function (...args) {
+            const temp = Array(0);
+            for (let arg of args) {
+                temp[temp.length] = arg;
+            }
+            for (let i = 0; i<this.length; i++){
+                temp[temp.length] = this[i];
+            }
+            for (let i = 0; i<temp.length; i++){
+                this[i] = temp[i];
+            }            
+            return args;
+        }
+
+        Array.prototype.myShift = function () {
+            const first = this[0]; 
+            for (let i = 1; i<this.length; i++){
+                this[i-1] = this[i];
+            }
+            this.length = this.length - 1;
+            return first;
+        }
+
+        Array.prototype.myPop = function () {
+            const last = this[this.length - 1]; 
+            this.length = this.length - 1;
+            return last;
+        }
+
+        Array.prototype.mySlice = function (first = undefined, last = undefined) {
+            const result = Array(0); 
+
+            if (first == undefined && last == undefined) {
+                for (let i=0; i<this.length; i++){
+                    result[i] = this[i];
+                }
+            } else if (first != undefined && last == undefined) {
+                result[0] = this[first];
+            } else if (first != undefined && last < 0){
+                let j = 0;
+                for (let i=first; i<=this.length -1 + last; i++){
+                    result[j] = this[i];
+                    j++;
+                }
+            } else if (first != undefined && last >= first){
+                let j = 0;
+                for (let i=first; i<=last; i++){
+                    result[j] = this[i];
+                    j++;
+                }
+            }
+            return result;
+        }
+
+        Array.prototype.mySplice = function (first = undefined, last = undefined, ...args) {
+            const result = Array(0); 
+
+            if (first == undefined && last == undefined) {
+            } else if (first != undefined && last > 0) {
+                for (let i=0; i<first;i++){
+                    result[i] = this[i];
+                }
+                let j = result.length;
+                for (let i=first + last; i<this.length; i++){
+                    result[j] = this[i];
+                    j++;
+                }
+            } else if (first != undefined && last === 0){
+                for (let i=0; i<first;i++){
+                    result[i] = this[i];
+                }
+                let j = result.length;
+                for (let arg of args) {
+                    result[j] = arg;
+                    j++;
+                }
+                for (let i=first; i<this.length; i++){
+                    result[j] = this[i];
+                    j++;
+                }
+            }
+            for (let i = 0; i<result.length; i++){
+                this[i] = result[i];
+            }    
+        }
+
+        Array.prototype.mySort = function (callback) {
+            // обычный пузырек, не самый быстрый способ сортировки, но самый понятный
+            
+            for (let i=0; i<this.length-1;i++){
+                for (let j=i+1; j< this.length; j++){
+                    if (callback(this[i], this[j])) {
+                        const temp = this[i];
+                        this[i] = this[j];
+                        this[j] = temp;
+                    }
+                }
+            }
+        }
+
+
+        const a01 = [1, 2, 3];
+        const a02 = [4, 5, 6];
+        const a03 = [1, 2, 3];
+        const a04 = [1, 2, 3];
+        const a05 = [1, 2, 3];
+        const a06 = [4, 5, 6];
+        const a07 = [1, 2, 3];
+        const a08 = [4, 5, 6];
+        const a09 = [1, 2, 3];
+        const a10 = [4, 5, 6];
+        const a11 = [1, 2, 3];
+        const a12 = [4, 5, 6];
+        const a13 = ['js', 'css', 'jq'];
+        const a14 = ['js', 'css', 'jq'];
+        const a15 = ['js', 'css', 'jq'];
+        const a16 = ['js', 'css', 'jq'];
+        const a17 = [1, 2, 3, 4, 5];
+        const a18 = [1, 2, 3, 4, 5];
+        const a19 = [1, 2, 3, 4, 5];
+        const a20 = [1, 2, 3, 4, 5];
+        const a21 = [1, 2, 3, 4, 5];
+        const a22 = [3, 4, 1, 2, 7];
+        const a23 = [3, 4, 1, 2, 7];
+
+        document.write(`<h1>Task 1. Array simple operation </h1><br>`);
+
+        document.write(`<b>Source  1 = [${a01}] </b><br>`);
+        document.write(`<b>Source  2 = [${a02}] </b><br>`);
+
+        const r01 = a01.concat(a02);        
+        document.write(`Concat result = [${r01}] <br>`);
+
+        const r02 = a01.myConcat(a02);         
+        document.write(`MyConcat result = [${r02}] <br>`);
+
+        document.write(`<b>Source  3 = [${a03}] </b><br>`);
+
+        const r03 = a03.reverse();
+        document.write(`Reverse result = [${r03}] <br>`);
+
+        const r04 = a04.myReverse();
+        document.write(`MyReverse result = [${r04}] <br>`);
+
+        document.write(`<b>Source  5 = [${a05}] </b><br>`);
+        document.write(`<b>Source  6 = [${a06}] </b><br>`);
+
+        const r05 = a05.push(...a06);
+        document.write(`Push result = [${r05}] ------- [${a05}] <br>`);
+
+        const r06 = a07.myPush(...a08);
+        document.write(`MyPush result = [${r06}] ------- [${a07}] <br>`);        
+
+        document.write(`<b>Source  9 = [${a09}] </b><br>`);
+        document.write(`<b>Source 10 = [${a10}] </b><br>`);
+
+        const r07 = a09.unshift(...a10);
+        document.write(`Unshift result = [${r07}] ------- [${a09}] <br>`);
+
+        const r08 = a11.myUnshift(...a12);
+        document.write(`MyUnshift result = [${r08}] ------- [${a11}] <br>`);        
+
+        document.write(`<b>Source  13 = [${a13}] </b><br>`);
+
+        const r09 = a13.shift();
+        document.write(`Shift result = [${r09}] ------- [${a13}] <br>`);
+
+        const r10 = a14.myShift();
+        document.write(`MyShift result = [${r10}] ------- [${a14}] <br>`);        
+
+        const r11 = a15.pop();
+        document.write(`Pop result = [${r11}] ------- [${a15}] <br>`);
+
+        const r12 = a16.myPop();
+        document.write(`MyPop result = [${r12}] ------- [${a16}] <br>`);        
+
+        document.write(`<b>Source  17 = [${a17}] </b><br>`);
+
+        const r13 = a17.slice(0, 3);
+        document.write(`Slice result = [${r13}] <br>`);
+
+        const r14 = a17.mySlice(3,4);
+        document.write(`MySlice result = [${r14}] <br>`);        
+
+        document.write(`<b>Source  18 = [${a18}] </b><br>`);
+
+        a18.splice(1, 2);
+        document.write(`Splice result = [${a18}] <br>`);
+        a19.splice(0, 1).concat(a19.splice(3,1));
+        const r15 = a19.slice();
+        document.write(`Splice result = [${r15}] <br>`);
+        a20.mySplice(3, 0, 'a', 'b', 'c');
+        document.write(`MySplice result = [${a20}] <br>`);
+        a21.mySplice(1, 0, 'a', 'b');
+        a21.mySplice(6, 0, 'c');
+        a21.mySplice(8, 0, 'e');
+        document.write(`MySplice result = [${a21}] <br>`);
+
+        document.write(`<b>Source  22 = [${a22}] </b><br>`);
+
+        a22.sort((a,b) => a > b);
+        document.write(`Sort+ result = [${a22}] <br>`);
+        a22.sort((a,b) => a < b);
+        document.write(`Sort- result = [${a22}] <br>`);
+
+        a23.mySort((a,b) => a > b);
+        document.write(`MySort+ result = [${a23}] <br>`);
+        a23.mySort((a,b) => a < b);
+        document.write(`MySort+ result = [${a23}] <br>`);
+
+        document.write(`<h1>Task 2. Array order operation </h1><br>`);
+        const b1 = ["Джаз", "Блюз"];
+        document.write(`Result 1 : [${b1}] <br>`);
+        b1.push("Рок-н-рол");
+        document.write(`Result 2 : [${b1}] <br>`);
+        const index = Math.trunc(b1.length / 2);
+        b1.splice(index,1);
+        b1.splice(index,0,"Класика");  
+        document.write(`Result 3 : [${b1}] <br>`);      
+        const b1first = b1.shift();
+        document.write(`Result 4 : f = ${b1first}, [${b1}] <br>`);
+        b1.unshift("Реп", "Реггі");
+        document.write(`Result 5 : [${b1}] <br>`);
+
+        document.write(`<h1>Task 3. Random Array of pictures </h1><br>`);
+        const c1 = ['pic1.jpeg','pic2.jpeg','pic3.jpeg','pic4.jpeg','pic5.jpeg','pic6.jpeg','pic7.jpeg'];
+        document.write(`Origin : [${c1}] <br>`);
+        const readyindex = Array(0);
+        while (readyindex.length < c1.length){
+            const index = Math.floor(Math.random() * c1.length);
+            if (readyindex.find((elem) => elem === index) === undefined) {
+                readyindex.push(index);
+                document.write(`Next picture = ${c1[index]} <br>`);
+            }
+        }
+    </script>
+</body>
+
+</html>

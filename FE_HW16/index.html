@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>NUMBER PLUS NUMBER</h1>
+    <h2>NUMBER MUST BE POSITIVE</h2>
+    <div>length of number may be 'n'</div>
+    <hr />
+    <label for="first1">First number</label>
+    <input id="first1" type="text" value="9876543210" />
+    <br />
+    <label for="second1">Second number</label>
+    <input id="second1" type="text" value="1234567890" />
+    <br />
+    <button onclick="calc1('first1', 'second1', 'result1')">
+      CALC + (FOR)
+    </button>
+    <label for="result1">Result</label>
+    <div id="result1"></div>
+    <hr />
+    <button onclick="calc2('first1', 'second1', 'result2')">
+      CALC + (RECURSION)
+    </button>
+    <label for="result2">Result</label>
+    <div id="result2"></div>
+    <script>
+      // інпути ставлю текст а не намбер - мисля така:
+      // якщо ставити намбер, тобото ожидаємо тільки ціфру,
+      // то якщо юзер таки добавить якийсь сімвол то замість числа у валью буде пуста строка.
+      // а для тексту таке дозволено.
+      // тому використовую текст та з перевіркою - викинути усі символи
+
+      // вішаю на інпути на зміну значення для перевірки чи є не ціфра
+      document.getElementById("first1").addEventListener("change", (elem) => {
+        check(elem.target);
+      });
+      document.getElementById("second1").addEventListener("change", (elem) => {
+        check(elem.target);
+      });
+
+      //перевірка на наявність ціфр
+      function check(object) {
+        //const obj = document.getElementById(objectName);
+        const currentValue = object.value;
+        const res = checkNumber(currentValue);
+        if (res != currentValue) {
+          object.value = res;
+        }
+      }
+
+      // розклав строку у массив, та при сбфрці обратно перевіряю коди сімволів, та те що не ціфра видаляю.
+      // п.с. можна було б зробити регулярку, але так цікавіше
+      function checkNumber(value = "") {
+        return value
+          .split("")
+          .reduce(
+            (a, b) =>
+              a + (48 <= b.charCodeAt(0) && b.charCodeAt(0) <= 57 ? b : ""),
+            ""
+          );
+      }
+
+      function getSimilarNumbers(objectName1, objectName2) {
+        // оригинальні значення
+        const originValue1 = document
+          .getElementById(objectName1)
+          .value.toString();
+        const originValue2 = document
+          .getElementById(objectName2)
+          .value.toString();
+
+        const maxlength = Math.max(originValue1.length, originValue2.length);
+
+        // робимо обидва числа однакової довжини, це для простоти обїоду -
+        // щоб не перевіряти потим довжини
+
+        return [
+          originValue1.padStart(maxlength, "0"),
+          originValue2.padStart(maxlength, "0"),
+        ];
+      }
+
+      // функція розрахунку суми двох безрозмірних чисел на базі ціклу FOR
+
+      function calc1(objectName1, objectName2, objectName3) {
+        const similar = getSimilarNumbers(objectName1, objectName2);
+
+        const value1 = similar[0];
+        const value2 = similar[1];
+
+        let result = "";
+
+        let dodatok = "0";
+        //змінна для запоминання додатку 1 -
+        //якщо наприклад додавання 5 + 5 = 10 - 0 пишимо, а 1 запам'ятали ))
+
+        //однакова дліна значень дозволяє тут робити звичайний цикл а не перебор while та контролювати поточні позиції кодного значення
+        for (let i = value1.length - 1; i >= 0; i--) {
+          const temp = (
+            dodatok.charCodeAt(0) -
+            48 +
+            (value1.charCodeAt(i) - 48) +
+            (value2.charCodeAt(i) - 48)
+          ).toString();
+          // склав код символа - 48 - так код '0' = 48
+          // це варіант щоб не використовувати parseInt()
+
+          result = temp[temp.length - 1] + result; //додаю останій символ в початок результату
+
+          dodatok = "0"; //обнуліти після попередньої транзакції
+
+          if (temp.length > 1) {
+            dodatok = temp[0];
+          }
+        }
+
+        if (dodatok != "0") {
+          result = dodatok + result;
+        }
+
+        //вивожу в ДОМ усі три значення, але не орігінальні, а замінени ()
+        document.getElementById(
+          objectName3
+        ).innerHTML = `<b>${value1}<b><br><b>${value2}<b><hr><b>${result}<b>`;
+      }
+
+      // функція розрахунку суми двох безрозмірних чисел на базі рекурсії
+      //спочатку підготовка чисел, потім до функції calcRecursion
+      function calc2(objectName1, objectName2, objectName3) {
+        const similar = getSimilarNumbers(objectName1, objectName2);
+
+        const value1 = similar[0];
+        const value2 = similar[1];
+
+        const result = calcRecursion(value1, value2, "0", value1.length - 1);
+
+        document.getElementById(
+          objectName3
+        ).innerHTML = `<b>${value1}<b><br><b>${value2}<b><hr><b>${result}<b>`;
+      }
+
+      function calcRecursion(value1, value2, dodatok = "0", pos = 0) {
+        //розрахунок той самий
+        const temp = (
+          dodatok.charCodeAt(0) -
+          48 +
+          (value1.charCodeAt(pos) - 48) +
+          (value2.charCodeAt(pos) - 48)
+        ).toString();
+
+        dodatok = "0";
+
+        if (temp.length > 1) {
+          dodatok = temp[0];
+        }
+
+        let result = temp[temp.length - 1];
+
+
+        //як що не початок стоки, то ідемо глибше аж до початку  
+        //і потім на ретурнах повертаємо значення та складаємо
+        if (pos > 0) {
+          result =
+            calcRecursion(
+              value1.substring(0, pos),
+              value2.substring(0, pos),
+              dodatok,
+              pos - 1
+            ) + result;
+        } else {
+          if (dodatok != "0") {
+            result = dodatok + result;
+          }
+        }
+
+        return result;
+      }
+    </script>
+  </body>
+</html>
