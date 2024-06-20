@@ -11,6 +11,8 @@ const cofeeType = [
     { descr: "Doppio", price: 50, ingridients: [2, 2] }
 ];
 
+var currentButton = '';
+
 let coffeeButtons = `<tr>
             <td class="machinehead" colspan="7">
                 <fieldset class="sugar-field">
@@ -76,7 +78,17 @@ document.querySelector('.tdvisual').innerHTML = doorsStr;
 
 document.querySelectorAll('.runcoffe').forEach((elem) =>
     elem.addEventListener('change', function (elem) {
+        if (currentButton === '') {
+            currentButton = elem.target.value
+        };
+        if (currentButton != elem.target.value) {
+            elem.target.checked = false;
+            return;
+        };
         if (elem.target.checked) {
+            elem.target.disabled = true;
+            currentButton += '_';
+            //elem.target.checked = false;
             let ingrStr = '';
             const currentItem = parseInt(elem.target.value);
             const currentCount = cofeeType[currentItem].ingridients.length;
@@ -87,21 +99,26 @@ document.querySelectorAll('.runcoffe').forEach((elem) =>
             document.querySelector(`.ingridients`).innerHTML = ingrStr;
             document.querySelector(`.img-${elem.target.value}`).classList.add("imgtomove");
             let isSugar = false;
-            const sugarElem = document.getElementsByName('sugar');
-            for (let i = 0; i < sugarElem.length; i++) {
-                if (sugarElem[i].checked) {
+            document.getElementsByName('sugar').forEach((sugarElem) => {
+                sugarElem.disabled = true;
+                if (sugarElem.checked) {
                     isSugar = true;
-                    break;
                 }
-            };
+            });
             if (isSugar) {
                 document.querySelector(`.sugarimg`).classList.add("sugarmove");
             }
             setTimeout(function () {
                 elem.target.checked = false;
+                elem.target.disabled = false;
+                currentButton = '';
+                document.getElementsByName('sugar').forEach((sugarElem) => {
+                    sugarElem.disabled = false;
+                    sugarElem.checked = false;
+                });
                 document.querySelector(`.img-${elem.target.value}`).classList.remove("imgtomove");
-                //document.querySelector(`.sugarimg`).classList.remove("sugarmove");
             }, 18000);
         }
     })
 );
+
