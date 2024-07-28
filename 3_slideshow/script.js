@@ -114,6 +114,8 @@ btnAdd.addEventListener('click', () => {
 
     //перезаповнити DOTs
     addDots();
+
+    btnAdd.disabled = !(slides.length != getWord.length);
   }
 });
 
@@ -131,4 +133,5 @@ btnDel.addEventListener('click', () => {
   //перезаповнити DOTs
   addDots();
 
+  btnDel.disabled = !(slides.length != 1);
 });
