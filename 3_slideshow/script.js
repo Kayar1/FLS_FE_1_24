@@ -10,15 +10,15 @@ const btnDel = document.querySelector('.del-slide');
 const slideParent = document.querySelector('.slides-wrap');
 const dotsParent = document.querySelector('.dots-nav');
 
-function changeSlide(el, index = -1, offset = 0) {
+dotsParent.addEventListener('click', () => {
+  let index = [...dots].indexOf(el);
+  changeSlide(el, index, 0);
+});
+
+function changeSlide(index) {
 
   let activeSlide = document.querySelector('[data-active]');
   let activeDot = document.querySelector('[data-dot_active]');
-
-  if (index === -1) {
-    index = [...slides].indexOf(activeSlide) + offset;
-    index = parseInt(index.toString(slides.length).slice(-1));
-  }
 
   slides[index].dataset.active = '';
   dots[index].dataset.dot_active = '';
@@ -28,8 +28,11 @@ function changeSlide(el, index = -1, offset = 0) {
 
 btns.forEach((el) => {
   el.addEventListener('click', () => {
+    let activeSlide = document.querySelector('[data-active]');
     let offset = el.dataset.dir === 'prev' ? slides.length - 1 : 1;
-    changeSlide(el, -1, offset);
+    let index = [...slides].indexOf(activeSlide) + offset;
+    index = parseInt(index.toString(slides.length).slice(-1));
+    changeSlide(index);
   });
 });
 
@@ -52,10 +55,9 @@ function addDots() {
   dots[index].dataset.dot_active = '';
 
   //назначити евент
-  dots.forEach((el) => {
+  dots.forEach((el, i) => {
     el.addEventListener('click', () => {
-      let index = [...dots].indexOf(el);
-      changeSlide(el, index, 0);
+      changeSlide(i);
     });
   });
 }
@@ -115,7 +117,7 @@ btnAdd.addEventListener('click', () => {
     //перезаповнити DOTs
     addDots();
 
-    btnAdd.disabled = !(slides.length != getWord.length);
+    btnAdd.disabled = slides.length === getWord.length - 1;
   }
 });
 
@@ -133,5 +135,6 @@ btnDel.addEventListener('click', () => {
   //перезаповнити DOTs
   addDots();
 
-  btnDel.disabled = !(slides.length != 1);
+  btnDel.disabled = slides.length === 1;
+  btnAdd.disabled = slides.length === getWord.length - 1;
 });
