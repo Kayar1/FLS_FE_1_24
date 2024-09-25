@@ -1,0 +1,236 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+.machinehead {
+    background-color: black;
+    color: yellow;
+}
+
+.sugar-field {
+    text-align: center;
+    vertical-align: middle;
+    justify-content: center;
+}
+
+label {
+    font-size: 22px;
+}
+
+.tdimg {
+    width: 100px;
+    text-align: center;
+    vertical-align: middle;
+    border: inset 3px black;
+    background-color: black;
+}
+
+.tdprice {
+    width: 80px;
+    text-align: center;
+    vertical-align: middle;
+    border: inset 3px black;
+    font-size: 22px;
+    font-weight: bold;
+    background-color: gray;
+    color: white;
+}
+
+.tdbutton {
+    text-align: center;
+    vertical-align: middle;
+    border: inset 3px black;
+    background-color: brown;
+}
+
+.tdvisual {
+    width: 100px;
+    position: relative;
+    overflow: hidden;
+}
+
+.ingridients {
+    position: absolute;
+    width: 100%;
+    height: 75%;
+    display: block;
+    background-color: darkblue;
+    border: 1px blue;
+    top: -100%;
+}
+
+.ingrs {
+    display: flex;
+}
+
+.door1 {
+    width: 100%;
+    height: 75%;
+    display: block;
+    background-color: black;
+    border: 1px blue;
+    position: absolute;
+    top: 0px;
+}
+
+.door3 {
+    width: 100%;
+    height: 23%;
+    display: block;
+    background-color: black;
+    border: 1px green;
+    position: absolute;
+    top: 250px;
+}
+
+.machinebottom {
+    background-color: black;
+    color: yellow;
+}
+
+.smallimg {
+    width: 100px;
+}
+
+.readyimg {
+    position: absolute;
+    width: 100%;
+    left: -100%;
+    top: 250px;
+}
+
+.sugarimg {
+    position: absolute;
+    width: 100%;
+    top: -100%;
+}
+
+.runlabel {
+    width: 50px;
+    height: 50px;
+    border-top: 2px solid white;
+    border-left: 2px solid white;
+    border-right: 2px solid black;
+    border-bottom: 2px solid black;
+    background-color: #e9e9ed;
+    color: red;
+    font-weight: bold;
+    font-size: 22px;
+}
+
+.runcoffe {
+    display: none;
+}
+
+.runcoffe:checked+.runlabel {
+    width: 50px;
+    height: 50px;
+    font-weight: bold;
+    color: red;
+    font-size: 22px;
+    background-color: #b1b1b9;
+    border-top: 2px solid black;
+    border-left: 2px solid black;
+    border-right: 2px solid white;
+    border-bottom: 2px solid white;
+}
+
+.machinemenu:has(tr td:nth-child(3).tdbutton .runcoffe:checked) tr:nth-child(2) td:nth-child(2) .door1,
+.machinemenu:has(tr td:nth-child(4).tdbutton .runcoffe:checked) tr:nth-child(2) td:nth-child(2) .door1 {
+    animation:
+        15s ease-out 1s 1 go-out;
+}
+
+.machinemenu:has(tr td:nth-child(3).tdbutton .runcoffe:checked) tr:nth-child(2) td:nth-child(2) .door3,
+.machinemenu:has(tr td:nth-child(4).tdbutton .runcoffe:checked) tr:nth-child(2) td:nth-child(2) .door3 {
+    animation:
+        10s ease-out 10s 1 go-out;
+}
+
+@keyframes go-out {
+    0% {
+        left: 0px;
+    }
+
+    25% {
+        left: 100%;
+    }
+
+    50% {
+        left: 100%;
+    }
+
+    75% {
+        left: 100%;
+    }
+
+    100% {
+        left: 0%;
+    }
+}
+
+.machinemenu:has(tr td:nth-child(3).tdbutton .runcoffe:checked) tr:nth-child(2) td:nth-child(2) .imgtomove,
+.machinemenu:has(tr td:nth-child(4).tdbutton .runcoffe:checked) tr:nth-child(2) td:nth-child(2) .imgtomove {
+    animation:
+        10s ease-out 10s 1 go-out1;
+}
+
+@keyframes go-out1 {
+    0% {
+        left: -100%;
+    }
+
+    25% {
+        left: 0px;
+    }
+
+    50% {
+        left: 0px;
+    }
+
+    75% {
+        left: 0px;
+    }
+
+    100% {
+        left: -100%;
+    }
+}
+
+.machinemenu:has(tr td:nth-child(3).tdbutton .runcoffe:checked) tr:nth-child(2) td:nth-child(2) .ingridients,
+.machinemenu:has(tr td:nth-child(4).tdbutton .runcoffe:checked) tr:nth-child(2) td:nth-child(2) .ingridients {
+    animation:
+        16s ease-out 4s 1 go-out2;
+}
+
+@keyframes go-out2 {
+    0% {
+        top: -100%;
+    }
+
+    25% {
+        top: 0px;
+    }
+
+    50% {
+        top: 0px;
+    }
+
+    75% {
+        top: 0px;
+    }
+
+    100% {
+        top: 0px;
+    }
+}
+
+.machinemenu:has(tr td:nth-child(3).tdbutton .runcoffe:checked) tr:nth-child(2) td:nth-child(2) .sugarmove,
+.machinemenu:has(tr td:nth-child(4).tdbutton .runcoffe:checked) tr:nth-child(2) td:nth-child(2) .sugarmove {
+    animation:
+        5s ease-out 10s 1 go-out2;
+}
