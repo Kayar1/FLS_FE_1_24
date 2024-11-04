@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ZOOM Collection</title>
+    <style>
+      body{
+        box-sizing: border-box;
+      }
+      .wrapper{
+        display: flex;
+        flex-wrap: wrap;
+      }
+        .div_iframe{
+          display: flex;  
+          height: 450px;
+            width: 670px;
+            border-style: inset;
+            border-color: grey;
+            overflow: scroll;            
+        }
+
+      .myframe {
+        display: flex;
+        height: 768px;
+        width: 1024px;
+        margin: -190px;
+        -webkit-transform:scale(0.5);-moz-transform-scale(0.5);
+      }
+
+      span{
+        display: flex;
+        flex-wrap: wrap;
+        font-weight: bold;
+        color: blue;
+        vertical-align:top;
+      }
+
+      @media (max-width: 640px) {
+        .div_iframe{
+          display: flex;  
+          flex-wrap: wrap;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      const addresses = [
+        {
+          descr: "Topol",
+          address: "http://8a420880d545.sn.mynetname.net:7166/",
+        },
+        {
+          descr: "Cherry",
+          address: "http://8a420880d545.sn.mynetname.net:7167/",
+        },
+        {
+          descr: "Kharkiv",
+          address: "http://8a420880d545.sn.mynetname.net:7174/",
+        },
+        {
+          descr: "Gagarin",
+          address: "http://8a420880d545.sn.mynetname.net:7175/",
+        },
+        {
+          descr: "200Rokiv",
+          address: "http://8a420880d545.sn.mynetname.net:7176/",
+        },
+        {
+          descr: "Sofiya",
+          address: "http://8a420880d545.sn.mynetname.net:7178/",
+        },
+        {
+          descr: "Viktory",
+          address: "http://8a420880d545.sn.mynetname.net:7181/",
+        },
+        {
+          descr: "Gostomel",
+          address: "http://8a420880d545.sn.mynetname.net:7182/",
+        },
+        {
+          descr: "BilaTherkva",
+          address: "http://8a420880d545.sn.mynetname.net:7183/",
+        },
+      ];
+      let wrapper;
+      addresses.forEach((el, i) => {
+        if (i % 2 === 0) {
+          wrapper = document.createElement("div");
+          wrapper.classList.add("wrapper");
+        }
+        const divs = document.createElement("div");
+        divs.classList.add("div_iframe");
+        divs.content = el.descr;
+        const ahref = document.createElement("span");
+        ahref.innerText = el.descr;
+        const iframe = document.createElement("iframe");
+        iframe.classList.add("myframe");
+        iframe.src = el.address;
+        divs.appendChild(ahref);
+        divs.appendChild(iframe);
+        wrapper.appendChild(divs);
+        if (i % 2 === 0) {
+          document.body.appendChild(wrapper);
+        }
+        divs.addEventListener("click", () => {
+          window.open(el.address);
+        });
+      });
+    </script>
+  </body>
+</html>
